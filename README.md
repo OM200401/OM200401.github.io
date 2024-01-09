@@ -1,4 +1,4 @@
-Portfolio Website
+# Portfolio Website
 
 ## About 
 The website is a personal project made using TS, HTML and TailwindCSS in the NextJS framework. It displays my ability to create a website using several different languages and shows understanding of front-end development. It has helped me a lot in getting
