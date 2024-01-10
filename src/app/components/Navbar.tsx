@@ -35,10 +35,10 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="flex justify-between items-center w-full h-20 px-4 text-black bg-blue-200 sticky nav">
+    <div className="flex justify-between items-center w-full h-20 px-4 text-black bg-blue-500 sticky nav">
       <div>
         {/* <h1 className="text-5xl font-signature ml-2"><a className="link-underline hover:transition ease-in-out delay-150 hover:underline hover:decoration-solid" href="">Logo</a></h1> */}
-        <h1 className="text-5xl font-signature ml-2">
+        <h1 className="text-5xl font-serif ml-2">
           <a
             className="link-underline link-underline-black"
             href=""
@@ -54,7 +54,7 @@ const Navbar = () => {
         {links.map(({ id, link }) => (
           <li
             key={id}
-            className="nav-links px-4 cursor-pointer capitalize font-medium text-neutral-950 hover:scale-105 hover:text-white duration-200 link-underline"
+            className="nav-links px-4 cursor-pointer capitalize font-semibold font-serif text-neutral-950 hover:scale-105 hover:text-white duration-200 link-underline"
           >
             <a onClick={() => setNav(!nav)} href={`#${link}`}>
               {link}
