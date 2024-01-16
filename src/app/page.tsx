@@ -140,7 +140,7 @@ export default function Home() {
             <div>
               <h3 className="text-2xl font-semibold">Contact Information</h3>
               {/* Fix links , currently not working properly */}
-              <p className="text-black font-bold">Email: ommistry0124@gmail.com</p>
+              <a className="text-black font-bold" href='mailto:ommistry0124@gmail.com'>Email: ommistry0124@gmail.com</a>
               <p className="text-black font-bold">Phone: (236)-308-5186</p>
               <p className="text-black font-bold">LinkedIn: <a href="www.linkedin.com/in/om-mistry">Om Mistry</a></p>
               <p className="text-black font-bold">GitHub: <a href="https://github.com/OM200401">OM200401</a></p>
