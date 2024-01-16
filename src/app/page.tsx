@@ -1,4 +1,31 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faJava, faPython, faJs, faHtml5, faCss3Alt, faNode, faReact, faGithubSquare, faDocker ,} from '@fortawesome/free-brands-svg-icons';
+
+const ProjectCard = ({title, date, description, githubLink }: {title: string, date: string, description: string, githubLink: string }) => (
+  <Link href={githubLink} passHref target="_blank" rel="noopener noreferrer">
+    <div className="bg-blue-400 p-6 rounded-lg shadow-md transform transition-transform hover:scale-105">
+      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <p className="text-black mb-4 font-semibold">{date}</p>
+      <p className="text-black font-semibold">{description}</p>
+    </div>
+</Link>
+);
+
+const ProgrammingIcons = () => (
+  <div className="grid grid-cols-3 gap-4 text-2xl text-gray-800">
+    <FontAwesomeIcon icon={faJava} color="#007396" />
+    <FontAwesomeIcon icon={faPython} color="#3776AB" />
+    <FontAwesomeIcon icon={faJs} color="#F7DF1E" />
+    <FontAwesomeIcon icon={faHtml5} color="#E44D26" />
+    <FontAwesomeIcon icon={faCss3Alt} color="#1572B6" />
+    <FontAwesomeIcon icon={faNode} color="#8CC84B" />
+    <FontAwesomeIcon icon={faReact} color="#61DAFB" />
+    <FontAwesomeIcon icon={faGithubSquare} color="black" />
+    <FontAwesomeIcon icon={faDocker} color="#2496ED" />
+  </div>
+);
 
 export default function Home() {
   return (
@@ -59,7 +86,8 @@ export default function Home() {
             <div>
               <h3 className="text-3xl font-bold">Skills</h3>
               <ul className="list-disc list-inside text-black">
-                <li className='text-2xl font-semibold '>Programming: Java, Python, JavaScript, Typescript, HTML/CSS, SQL, Node.js, React.js, Next.js, Remix, C (CUDA, OPENMP)</li>
+              <li className='text-2xl font-semibold '>Programming: Java, Python, JavaScript, Typescript, HTML/CSS, SQL, Node.js, React.js, Next.js, Remix, C (CUDA, OPENMP)</li>
+                <ProgrammingIcons />
                 <li className='text-2xl font-semibold'>Tools: Android Studio, IntelliJ, Eclipse, Jupyter Notebooks, Git, VSCode, Docker</li>
                 <li className='text-2xl font-semibold'>Soft Skills: Time Management, Teamwork, Problem-Solving, Leadership, etc.</li>
               </ul>
@@ -71,32 +99,29 @@ export default function Home() {
       <section id='4' className="py-16 bg-gray-600">
         <div className='container mx-auto'>
           <h2 className='text-5xl font-bold mb-8'>Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className=" bg-blue-400 p-6 rounded-lg shadow-md transform transition-transform hover:scale-105">
-              <h3 className="text-xl font-bold mb-2">Portfolio Website</h3>
-              <p className="text-black mb-4 font-semibold">Oct 2023 – Current</p>
-              <p className="text-black font-semibold">
-                Developed a website showcasing my skills and abilities using Next.js, TypeScript, HTML/CSS.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <ProjectCard
+              title="Portfolio Website"
+              date="Oct 2023 – Current"
+              description="Developed a website showcasing my skills and abilities using Next.js, TypeScript, HTML/CSS."
+              githubLink="https://github.com/OM200401/Portfolio"
+          />
 
-            <div className="bg-blue-400 p-6 rounded-lg shadow-md transform transition-transform hover:scale-105">
-              <h3 className="text-xl font-bold mb-2">Grocery Shopping Website</h3>
-              <p className="text-black mb-4 font-semibold">Nov 2023 – Dec 2023</p>
-              <p className="text-black font-semibold">
-                Developed a full-stack grocery website using Node.js, HTML/CSS, MySQL, implementing features like product addition, order tracking, and authentication.
-              </p>
-            </div>
 
-            <div className="bg-blue-400 p-6 rounded-lg shadow-md transform transition-transform hover:scale-105">
-              <h3 className="text-xl font-bold mb-2">Python Prediction Model</h3>
-              <p className="text-black mb-4 font-semibold">Jan 2023 – April 2023</p>
-              <p className="text-black font-semibold">
-                Trained a Python model for data analysis on a Gun Violence Dataset using libraries like Pandas, Seaborn, and Matplotlib.
-              </p>
-            </div>
+            <ProjectCard
+              title="Grocery Shopping Website"
+              date="Nov 2023 – Dec 2023"
+              description="Developed a full-stack grocery website using Node.js, HTML/CSS, MySQL, implementing features like product addition, order tracking, and authentication."
+              githubLink="https://github.com/OM200401/COSC304_Project"
+            />
 
-            {/* You can add more project cards following the same structure */}
+            <ProjectCard
+              title="Python Prediction Model"
+              date="Jan 2023 – April 2023"
+              description="Trained a Python model for data analysis on a Gun Violence Dataset using libraries like Pandas, Seaborn, and Matplotlib."
+              githubLink="https://github.com/ubco-W2022T2-data301/project-group09"
+            />
+
           </div>
         </div>
       </section>
