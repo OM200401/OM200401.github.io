@@ -15,7 +15,7 @@ const ProjectCard = ({title, date, description, githubLink }: {title: string, da
 
 const ProgrammingIcons = () => (
   <div className="grid grid-cols-3 gap-4 text-2xl text-gray-800">
-    <FontAwesomeIcon icon={faJava} color="#007396" />
+    <FontAwesomeIcon icon={faJava} color="#007396" size = "s" />
     <FontAwesomeIcon icon={faPython} color="#3776AB" />
     <FontAwesomeIcon icon={faJs} color="#F7DF1E" />
     <FontAwesomeIcon icon={faHtml5} color="#E44D26" />
@@ -32,20 +32,23 @@ export default function Home() {
     <div>
     <section id='1' className="grid grid-cols-1 md:grid-cols-2 h-screen bg-gray-500">
         {/* Left side */}
-        <div className="flex justify-center items-center">
-          <div className='text-black'>
-            <p className='text-7xl font-semibold font-serif'>
+        <div className="relative flex justify-center items-center ml-80">
+          <div className='text-black relative'>
+            <p className='text-7xl font-mono'>Hi, I am </p>
+            <p className='text-7xl font-extrabold font-serif'>
               Om Mistry
             </p>
-            <p className='text-xl font-semibold font-serif'>
-              Welcome to my website !
-            </p>
+            <div className="bg-blue-400 pl-24 pt-5 pb-5 pr-24 mt-7 rounded-lg text-white text-center">
+              <p className='text-3xl font-semibold font-serif'>
+                Software Engineer
+              </p>
+            </div>
           </div>
         </div>
 
         {/* Right side */}
         <div className='relative flex justify-center items-center'>
-          <div className="absolute top-20 right-20 md:relative w-fit h-fit overflow-hidden rounded-full">
+          <div className="relative top-20 md:relative w-fit h-fit overflow-hidden rounded-full">
             <Image
               src="/profile.jpg"
               alt="Picture of the author"
@@ -58,10 +61,12 @@ export default function Home() {
 
       <section id='2' className="grid justify-center items-center h-screen bg-gray-600">
         <div className='container mx-auto'>
-          <h2 className='text-5xl font-semibold mb-8'>ABOUT</h2>
+          <h2 className='text-5xl font-semibold mb-8'>WHO AM I </h2>
           <p className='text-3xl text-white font-semibold'>
-            Hey there ! I am a 20 year old passionate computer science student at the University of British Columbia, specializing in both Computer Science and Data Science.
-            With an eager to learn persona and a keen interest in software development, AI, machine learning, and Data analysis, I have gained valuable skills in various programming languages and technologies. I enjoy tackling complex problems and am dedicated to continuous learning in the tech field.
+            Hey there ! 👋I am <strong>Om</strong>, a 20 year old passionate computer science student at the <strong>University of British Columbia</strong>, specializing in  Computer Science with a Minor in Data Science.
+          </p>
+          <p className='text-3xl text-white font-semibold'>
+            With an eager to learn persona and a keen interest in Software development, AI, Machine Learning, and Data Analysis, I have gained valuable skills in various programming languages and technologies. I enjoy tackling complex problems and am dedicated to continuous learning in the tech field.
           </p>
         </div>
       </section>
@@ -87,7 +92,7 @@ export default function Home() {
               <h3 className="text-3xl font-bold">Skills</h3>
               <ul className="list-disc list-inside text-black">
               <li className='text-2xl font-semibold '>Programming: Java, Python, JavaScript, Typescript, HTML/CSS, SQL, Node.js, React.js, Next.js, Remix, C (CUDA, OPENMP)</li>
-                <ProgrammingIcons />
+                {/* <ProgrammingIcons/> */}
                 <li className='text-2xl font-semibold'>Tools: Android Studio, IntelliJ, Eclipse, Jupyter Notebooks, Git, VSCode, Docker</li>
                 <li className='text-2xl font-semibold'>Soft Skills: Time Management, Teamwork, Problem-Solving, Leadership, etc.</li>
               </ul>
@@ -156,7 +161,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section>    
 
       <section id='6' className="py-16 bg-gray-600">
         <div className='container mx-auto'>
@@ -164,10 +169,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-2xl font-semibold">Contact Information</h3>
-              {/* Fix links , currently not working properly */}
               <a className="text-black font-bold" href='mailto:ommistry0124@gmail.com'>Email: ommistry0124@gmail.com</a>
               <p className="text-black font-bold">Phone: (236)-308-5186</p>
-              <p className="text-black font-bold">LinkedIn: <a href="www.linkedin.com/in/om-mistry">Om Mistry</a></p>
+              <p className="text-black font-bold">LinkedIn: <a href="https://www.linkedin.com/in/om-mistry">Om Mistry</a></p>
               <p className="text-black font-bold">GitHub: <a href="https://github.com/OM200401">OM200401</a></p>
             </div>
              {/* Need to add a contact form in the future */}
