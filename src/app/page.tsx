@@ -13,19 +13,19 @@ const ProjectCard = ({title, date, description, githubLink }: {title: string, da
 </Link>
 );
 
-const ProgrammingIcons = () => (
-  <div className="grid grid-cols-3 gap-4 text-2xl text-gray-800">
-    <FontAwesomeIcon icon={faJava} color="#007396" size = "s" />
-    <FontAwesomeIcon icon={faPython} color="#3776AB" />
-    <FontAwesomeIcon icon={faJs} color="#F7DF1E" />
-    <FontAwesomeIcon icon={faHtml5} color="#E44D26" />
-    <FontAwesomeIcon icon={faCss3Alt} color="#1572B6" />
-    <FontAwesomeIcon icon={faNode} color="#8CC84B" />
-    <FontAwesomeIcon icon={faReact} color="#61DAFB" />
-    <FontAwesomeIcon icon={faGithubSquare} color="black" />
-    <FontAwesomeIcon icon={faDocker} color="#2496ED" />
-  </div>
-);
+// const ProgrammingIcons = () => (
+//   <div className="grid grid-cols-3 gap-4 text-2xl text-gray-800">
+//     <FontAwesomeIcon icon={faJava} color="#007396" size = "s" />
+//     <FontAwesomeIcon icon={faPython} color="#3776AB" />
+//     <FontAwesomeIcon icon={faJs} color="#F7DF1E" />
+//     <FontAwesomeIcon icon={faHtml5} color="#E44D26" />
+//     <FontAwesomeIcon icon={faCss3Alt} color="#1572B6" />
+//     <FontAwesomeIcon icon={faNode} color="#8CC84B" />
+//     <FontAwesomeIcon icon={faReact} color="#61DAFB" />
+//     <FontAwesomeIcon icon={faGithubSquare} color="black" />
+//     <FontAwesomeIcon icon={faDocker} color="#2496ED" />
+//   </div>
+// );
 
 export default function Home() {
   return (
