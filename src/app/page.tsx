@@ -40,7 +40,7 @@ export default function Home() {
             </p>
             <div className="bg-blue-400 pl-24 pt-5 pb-5 pr-24 mt-7 rounded-lg text-white text-center">
               <p className='text-3xl font-semibold font-serif'>
-                Software Engineer
+                Full-Stack Developer
               </p>
             </div>
           </div>
