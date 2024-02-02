@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faJava, faPython, faJs, faHtml5, faCss3Alt, faNode, faReact, faGithubSquare, faDocker ,} from '@fortawesome/free-brands-svg-icons';
+import { faJava, faPython, faJs, faHtml5, faCss3Alt, faNode, faReact, faGithubSquare, faDocker ,faLinkedin, faGithub} from '@fortawesome/free-brands-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const ProjectCard = ({title, date, description, githubLink }: {title: string, date: string, description: string, githubLink: string }) => (
   <Link href={githubLink} passHref target="_blank" rel="noopener noreferrer">
@@ -15,7 +16,7 @@ const ProjectCard = ({title, date, description, githubLink }: {title: string, da
 
 // const ProgrammingIcons = () => (
 //   <div className="grid grid-cols-3 gap-4 text-2xl text-gray-800">
-//     <FontAwesomeIcon icon={faJava} color="#007396" size = "s" />
+//     <FontAwesomeIcon icon={faJava as IconProp} color="#007396" />
 //     <FontAwesomeIcon icon={faPython} color="#3776AB" />
 //     <FontAwesomeIcon icon={faJs} color="#F7DF1E" />
 //     <FontAwesomeIcon icon={faHtml5} color="#E44D26" />
@@ -30,7 +31,7 @@ const ProjectCard = ({title, date, description, githubLink }: {title: string, da
 export default function Home() {
   return (
     <div>
-    <section id='1' className="grid grid-cols-1 md:grid-cols-2 h-screen bg-gray-500">
+      <section id='1' className="grid grid-cols-1 md:grid-cols-2 h-screen bg-gray-500">
         {/* Left side */}
         <div className="relative flex justify-center items-center ml-80">
           <div className='text-black relative'>
@@ -93,6 +94,7 @@ export default function Home() {
               <ul className="list-disc list-inside text-black">
               <li className='text-2xl font-semibold '>Programming: Java, Python, JavaScript, Typescript, HTML/CSS, SQL, Node.js, React.js, Next.js, Remix, C (CUDA, OPENMP)</li>
                 {/* <ProgrammingIcons/> */}
+                
                 <li className='text-2xl font-semibold'>Tools: Android Studio, IntelliJ, Eclipse, Jupyter Notebooks, Git, VSCode, Docker</li>
                 <li className='text-2xl font-semibold'>Soft Skills: Time Management, Teamwork, Problem-Solving, Leadership, etc.</li>
               </ul>
@@ -165,20 +167,27 @@ export default function Home() {
 
       <section id='6' className="py-16 bg-gray-600">
         <div className='container mx-auto'>
-          <h2 className='text-4xl font-semibold mb-8'>Contact</h2>
+          <h2 className='text-4xl font-semibold mb-8 text-white'>Contact</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-2xl font-semibold">Contact Information</h3>
-              <a className="text-black font-bold" href='mailto:ommistry0124@gmail.com'>Email: ommistry0124@gmail.com</a>
-              <p className="text-black font-bold">Phone: (236)-308-5186</p>
-              <p className="text-black font-bold">LinkedIn: <a href="https://www.linkedin.com/in/om-mistry">Om Mistry</a></p>
-              <p className="text-black font-bold">GitHub: <a href="https://github.com/OM200401">OM200401</a></p>
+            <div className="text-white">
+              <p className="text-lg font-medium mb-2">
+                Email: <a className="text-blue-400" href='mailto:ommistry0124@gmail.com'>ommistry0124@gmail.com</a>
+              </p>
+              <p className="text-lg font-medium mb-2">Phone: (236)-308-5186</p>
+              <p className="text-lg font-medium mb-2">
+                LinkedIn: <a className="text-blue-400" href="https://www.linkedin.com/in/om-mistry">Om Mistry</a>
+              </p>
+              <p className="text-lg font-medium mb-2">
+                GitHub: <a className="text-blue-400" href="https://github.com/OM200401">OM200401</a>
+              </p>
             </div>
-             {/* Need to add a contact form in the future */}
+            <div>
+              {/* You can add a contact form here if needed */}
+            </div>
           </div>
         </div>
       </section>
-      </div>
+    </div>
 
   );
 }
