@@ -111,7 +111,7 @@ export default function Home() {
               title="Gestura"
               date="Janurary 2024 "
               description="Developed a software to convert ASL to text and speech in 5 different languages using Python with the help of OpenCV, Keras and Tensorflow and presented it on a website made with HTML, CSS and nodeJS. "
-              githubLink="https://github.com/OM200401/Portfolio"
+              githubLink="https://github.com/OM200401/Gestura"
           />
 
             <ProjectCard
