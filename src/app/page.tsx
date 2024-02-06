@@ -6,7 +6,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const ProjectCard = ({title, date, description, githubLink }: {title: string, date: string, description: string, githubLink: string }) => (
   <Link href={githubLink} passHref target="_blank" rel="noopener noreferrer">
-    <div className="bg-blue-400 p-6 rounded-lg shadow-md transform transition-transform hover:scale-105">
+    <div className="h-full w-full bg-blue-400 p-6 rounded-lg shadow-md transform transition-transform hover:scale-105">
       <h3 className="text-xl font-bold mb-2">{title}</h3>
       <p className="text-black mb-4 font-semibold">{date}</p>
       <p className="text-black font-semibold">{description}</p>
@@ -108,16 +108,15 @@ export default function Home() {
           <h2 className='text-5xl font-bold mb-8'>Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           <ProjectCard
-              title="Portfolio Website"
-              date="Oct 2023 – Current"
-              description="Developed a website showcasing my skills and abilities using Next.js, TypeScript, HTML/CSS."
+              title="Gestura"
+              date="Janurary 2024 "
+              description="Developed a software to convert ASL to text and speech in 5 different languages using Python with the help of OpenCV, Keras and Tensorflow and presented it on a website made with HTML, CSS and nodeJS. "
               githubLink="https://github.com/OM200401/Portfolio"
           />
 
-
             <ProjectCard
               title="Grocery Shopping Website"
-              date="Nov 2023 – Dec 2023"
+              date="Dec 2023 "
               description="Developed a full-stack grocery website using Node.js, HTML/CSS, MySQL, implementing features like product addition, order tracking, and authentication."
               githubLink="https://github.com/OM200401/COSC304_Project"
             />
@@ -128,7 +127,7 @@ export default function Home() {
               description="Trained a Python model for data analysis on a Gun Violence Dataset using libraries like Pandas, Seaborn, and Matplotlib."
               githubLink="https://github.com/ubco-W2022T2-data301/project-group09"
             />
-
+          
           </div>
         </div>
       </section>
