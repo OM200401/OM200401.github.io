@@ -28,17 +28,18 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      const serviceId = process.env.SERVICE_ID;
-      const templateId = process.env.TEMPLATE_ID;
-      const userId = process.env.USER_ID;
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
+      
       if (!serviceId) {
-        throw new Error('SERVICE_ID is not defined');
+        throw new Error('NEXT_PUBLIC_EMAILJS_SERVICE_ID is not defined');
       }
       if (!templateId) {
-        throw new Error('TEMPLATE_ID is not defined');
+        throw new Error('NEXT_PUBLIC_EMAILJS_TEMPLATE_ID is not defined');
       }
       if (!userId) {
-        throw new Error('USER_ID is not defined');
+        throw new Error('NEXT_PUBLIC_EMAILJS_USER_ID is not defined');
       }
 
       const result = await emailjs.send(
