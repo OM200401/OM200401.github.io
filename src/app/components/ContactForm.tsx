@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import emailjs from 'emailjs-com'
 
 const ContactForm = () => {
   const [formState, setFormState] = useState({
@@ -27,15 +28,27 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formState),
-      });
+      const serviceId = process.env.SERVICE_ID;
+      const templateId = process.env.TEMPLATE_ID;
+      const userId = process.env.USER_ID;
+      if (!serviceId) {
+        throw new Error('SERVICE_ID is not defined');
+      }
+      if (!templateId) {
+        throw new Error('TEMPLATE_ID is not defined');
+      }
+      if (!userId) {
+        throw new Error('USER_ID is not defined');
+      }
 
-      if (response.ok) {
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        formState,
+        userId
+      );
+
+      if (result.status === 200) {
         setIsSubmitted(true);
         setFormState({ name: '', email: '', message: '' });
       } else {
