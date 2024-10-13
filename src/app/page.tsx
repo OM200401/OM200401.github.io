@@ -77,7 +77,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <h1 className="text-4xl md:text-6xl font-bold mb-4">Hi, I'm Om Mistry</h1>
+                <h1 className="text-4xl md:text-6xl font-bold mb-4">Hi, I&apos;m Om Mistry</h1>
                 <p className="text-xl md:text-2xl mb-8">Full-Stack Developer</p>
                 <Link href="#contact" className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition duration-300">
                   Get in touch
@@ -107,8 +107,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-8 text-center">About Me</h2>
             <div className="max-w-3xl mx-auto text-center">
               <p className="mb-4">
-                Hey there! 👋 I'm Om, a 20-year-old passionate computer science student at the University of British Columbia, specializing in Computer Science with a Minor in Data Science.
-              </p>
+                Hey there! 👋 I&apos;m Om, a 20-year-old passionate computer science student at the University of British Columbia, specializing in Computer Science with a Minor in Data Science.</p>
               <p>
                 With an eager-to-learn attitude and a keen interest in Software Development, AI, Machine Learning, and Data Analysis, I have gained valuable skills in various programming languages and technologies. I enjoy tackling complex problems and am dedicated to continuous learning in the tech field.
               </p>
