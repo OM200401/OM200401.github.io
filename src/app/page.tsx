@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faJava, faPython, faJs, faHtml5, faCss3Alt, faNode, faReact, faGithubSquare, faDocker, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faCode, faCog, faDatabase, faFire, faLeaf, faMicrochip, faMoon, faServer, faWind } from '@fortawesome/free-solid-svg-icons';
 
 const ProjectCard = ({ title, date, description, githubLink }: { title: string, date: string, description: string, githubLink: string }) => (
   <motion.div
@@ -23,19 +24,37 @@ const ProjectCard = ({ title, date, description, githubLink }: { title: string, 
   </motion.div>
 );
 
-const ProgrammingIcons = () => (
-  <div className="grid grid-cols-3 gap-4 text-2xl text-gray-800 dark:text-gray-200">
-    <FontAwesomeIcon icon={faJava as IconProp} />
-    <FontAwesomeIcon icon={faPython as IconProp} />
-    <FontAwesomeIcon icon={faJs as IconProp} />
-    <FontAwesomeIcon icon={faHtml5 as IconProp} />
-    <FontAwesomeIcon icon={faCss3Alt as IconProp} />
-    <FontAwesomeIcon icon={faNode as IconProp} />
-    <FontAwesomeIcon icon={faReact as IconProp} />
-    <FontAwesomeIcon icon={faGithubSquare as IconProp} />
-    <FontAwesomeIcon icon={faDocker as IconProp} />
-  </div>
+const SkillIcon = ({ icon, name }: { icon: IconProp, name: string }) =>(
+  <motion.div
+    className='flex flex-col items-center'
+    whileHover={{scale: 1.1}}
+    whileTap={{scale: 0.95}}
+  >
+    <FontAwesomeIcon icon={icon as IconProp} className='text-4xl mb-2'/>
+    <span className='text-sm text-center'>{name}</span>
+  </motion.div>
 );
+
+const skills = [
+  { icon: faReact, name: "React" },
+  { icon: faPython, name: "Python" },
+  { icon: faJava, name: "Java" },
+  { icon: faJs, name: "JavaScript" },
+  { icon: faCode, name: "TypeScript" },
+  { icon: faHtml5, name: "HTML5" },
+  { icon: faCss3Alt, name: "CSS3" },
+  { icon: faNode, name: "Node.js" },
+  { icon: faGithub, name: "Git" },
+  { icon: faDocker, name: "Docker" },
+  { icon: faDatabase, name: "SQL" },
+  { icon: faMicrochip, name: "CUDA" },
+  { icon: faCog, name: "OpenMP" },
+  { icon: faWind, name: "Tailwind CSS" },
+  { icon: faLeaf, name: "NextJS" },
+  { icon: faMoon, name: "AstroJS" },
+  { icon: faFire, name: "Lua" },
+  { icon: faServer, name: "MongoDB" },
+];
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
@@ -118,15 +137,36 @@ export default function Home() {
 
         <section id="skills" className="py-20 bg-gray-200 dark:bg-gray-800">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold mb-8 text-center">Skills</h2>
-            <div className="max-w-3xl mx-auto">
-              <ProgrammingIcons />
-              <ul className="mt-8 space-y-2">
-                <li>Programming: Java, Python, JavaScript, TypeScript, HTML/CSS, SQL, Node.js, React.js, Next.js, Remix, C (CUDA, OpenMP)</li>
-                <li>Tools: Android Studio, IntelliJ, Eclipse, Jupyter Notebooks, Git, VSCode, Docker</li>
+            <h2 className="text-3xl font-bold mb-12 text-center">Skills</h2>
+            <motion.div 
+              className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              {skills.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <SkillIcon icon={skill.icon as IconProp} name={skill.name} />
+                </motion.div>
+              ))}
+            </motion.div>
+            <motion.div 
+              className="mt-12 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <h3 className="text-xl font-semibold mb-4">Additional Skills</h3>
+              <ul className="list-disc list-inside space-y-2">
+                <li>Tools: Android Studio, IntelliJ, Eclipse, Jupyter Notebooks, VSCode</li>
                 <li>Soft Skills: Time Management, Teamwork, Problem-Solving, Leadership</li>
               </ul>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -137,8 +177,26 @@ export default function Home() {
               <ProjectCard
                 title="Gestura"
                 date="January 2024"
-                description="Developed a software to convert ASL to text and speech in 5 different languages using Python with OpenCV, Keras, and TensorFlow."
+                description="This project was developed during BCHacks 2024 and won the second place at the hackathon. Developed a software to convert ASL to text and speech in 5 different languages using Python with OpenCV, Keras, and TensorFlow."
                 githubLink="https://github.com/OM200401/Gestura"
+              />
+              <ProjectCard
+                title='WCUCC 2025'
+                date='Present'
+                description='Part of the Website Development Team for the Western Canadian Undergraduate Chemistry Conference 2025 which is to be hosted at UBCO the upcoming summer'
+                githubLink=''
+              />
+              <ProjectCard 
+                title="Discourse E-Learning Platform"
+                date="April 2024"
+                description='The project was developed as part of the COSC 310 (Software Engineering Course) and it focuses on Agile Development principles and the Software Engineering Lifecycle. It was developed using NextJS and TailwindCSS for the frontend and Firebase for the Backend Development. We also used Github Actions and Vercel to develop pipelines and host our platform online.'
+                githubLink='https://github.com/OM200401/Discord-Mods'
+              />
+                <ProjectCard
+                title="S-MART"
+                date="December 2023"
+                description='The project aims to develop a robust and user-friendly grocery shopping platform named "S-MART." This platform was built using Node.js, CSS, Docker and Express alongside SQL for the Backend Development.'
+                githubLink='https://github.com/OM200401/COSC304_project'
               />
               <ProjectCard
                 title="Grocery Shopping Website"
