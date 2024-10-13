@@ -2,12 +2,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ExperienceCard from '@/app/components/ExperienceCard';
+import ContactForm from './components/ContactForm';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faJava, faPython, faJs, faHtml5, faCss3Alt, faNode, faReact, faGithubSquare, faDocker, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCode, faCog, faDatabase, faFire, faLeaf, faMicrochip, faMoon, faServer, faWind } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faCog, faDatabase, faEnvelope, faFire, faLeaf, faMicrochip, faMoon, faServer, faWind } from '@fortawesome/free-solid-svg-icons';
 
 const ProjectCard = ({ title, date, description, githubLink }: { title: string, date: string, description: string, githubLink: string }) => (
   <motion.div
@@ -216,26 +217,35 @@ export default function Home() {
 
         <ExperienceCard/>
 
-        <section id="contact" className="py-20">
+        <section id="contact" className="py-20 bg-gray-100 dark:bg-gray-800">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold mb-8 text-center">Contact</h2>
-            <div className="max-w-md mx-auto">
-              <p className="mb-4">
-                <strong>Email:</strong> <a href="mailto:ommistry0124@gmail.com" className="text-blue-500 hover:underline">ommistry0124@gmail.com</a>
-              </p>
-              <p className="mb-4">
-                <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/om-mistry" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Om Mistry</a>
-              </p>
-              <p className="mb-4">
-                <strong>GitHub:</strong> <a href="https://github.com/OM200401" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">OM200401</a>
-              </p>
-              <div className="flex justify-center space-x-4 mt-8">
-                <a href="https://www.linkedin.com/in/om-mistry" target="_blank" rel="noopener noreferrer" className="text-3xl hover:text-blue-500">
-                  <FontAwesomeIcon icon={faLinkedin as IconProp} />
-                </a>
-                <a href="https://github.com/OM200401" target="_blank" rel="noopener noreferrer" className="text-3xl hover:text-gray-700 dark:hover:text-gray-300">
-                  <FontAwesomeIcon icon={faGithub as IconProp} />
-                </a>
+            <h2 className="text-3xl font-bold mb-8 text-center text-gray-800 dark:text-white">Contact</h2>
+            <div className="max-w-3xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Get in Touch</h3>
+                  <p className="mb-4 text-gray-600 dark:text-gray-300">
+                    I&apos;m always open to new opportunities and collaborations. Feel free to reach out!
+                  </p>
+                  <div className="space-y-2">
+                    <p className="flex items-center text-gray-600 dark:text-gray-300">
+                      <FontAwesomeIcon icon={faEnvelope as IconProp} className="mr-2 w-5" />
+                      <a href="mailto:ommistry0124@gmail.com" className="hover:text-blue-500">ommistry0124@gmail.com</a>
+                    </p>
+                    <p className="flex items-center text-gray-600 dark:text-gray-300">
+                      <FontAwesomeIcon icon={faLinkedin as IconProp} className="mr-2 w-5" />
+                      <a href="https://www.linkedin.com/in/om-mistry" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500">Om Mistry</a>
+                    </p>
+                    <p className="flex items-center text-gray-600 dark:text-gray-300">
+                      <FontAwesomeIcon icon={faGithub as IconProp} className="mr-2 w-5" />
+                      <a href="https://github.com/OM200401" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500">OM200401</a>
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Connect with Me</h3>
+                  <ContactForm />
+                </div>
               </div>
             </div>
           </div>
