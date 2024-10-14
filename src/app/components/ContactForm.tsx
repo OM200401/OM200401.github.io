@@ -23,33 +23,20 @@ const ContactForm = () => {
     })
   }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-
+  
     try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
-      
-      if (!serviceId) {
-        throw new Error('NEXT_PUBLIC_EMAILJS_SERVICE_ID is not defined');
-      }
-      if (!templateId) {
-        throw new Error('NEXT_PUBLIC_EMAILJS_TEMPLATE_ID is not defined');
-      }
-      if (!userId) {
-        throw new Error('NEXT_PUBLIC_EMAILJS_USER_ID is not defined');
-      }
-
-      const result = await emailjs.send(
-        serviceId,
-        templateId,
-        formState,
-        userId
-      );
-
-      if (result.status === 200) {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
+      });
+  
+      if (response.ok) {
         setIsSubmitted(true);
         setFormState({ name: '', email: '', message: '' });
       } else {
