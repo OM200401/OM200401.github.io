@@ -59,6 +59,7 @@ const skills = [
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
+  const [age, setAge] = useState(0);
 
   useEffect(() => {
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -69,6 +70,21 @@ export default function Home() {
     document.documentElement.classList.toggle('dark', darkMode);
     localStorage.setItem('darkMode', darkMode.toString());
   }, [darkMode]);
+
+  useEffect(() => {
+    const calculateAge = (birthday: string) => {
+      const birthDate = new Date(birthday);
+      const today = new Date();
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDifference = today.getMonth() - birthDate.getMonth();
+      if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      return age;
+    };
+
+    setAge(calculateAge('2004-01-01'));
+  }, []);
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
@@ -128,7 +144,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-8 text-center">About Me</h2>
             <div className="max-w-3xl mx-auto text-center">
               <p className="mb-4">
-                Hey there! 👋 I&apos;m Om, a 20-year-old passionate computer science student at the University of British Columbia, specializing in Computer Science with a Minor in Data Science.</p>
+                Hey there! 👋 I&apos;m Om, a {age}-year-old passionate computer science student at the University of British Columbia, specializing in Computer Science with a Minor in Data Science.</p>
               <p>
                 With an eager-to-learn attitude and a keen interest in Software Development, AI, Machine Learning, and Data Analysis, I have gained valuable skills in various programming languages and technologies. I enjoy tackling complex problems and am dedicated to continuous learning in the tech field.
               </p>
@@ -185,7 +201,7 @@ export default function Home() {
                 title='WCUCC 2025'
                 date='Present'
                 description='Part of the Website Development Team for the Western Canadian Undergraduate Chemistry Conference 2025 which is to be hosted at UBCO the upcoming summer'
-                githubLink=''
+                githubLink='https://wcucc.ca'
               />
               <ProjectCard 
                 title="Discourse E-Learning Platform"
