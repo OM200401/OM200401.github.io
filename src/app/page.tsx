@@ -122,7 +122,7 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
               >
                 <h1 className="text-4xl md:text-6xl font-bold mb-4">Hi, I&apos;m Om Mistry</h1>
-                <p className="text-xl md:text-2xl mb-8">Full-Stack Developer</p>
+                <p className="text-xl md:text-2xl mb-8">Software Developer</p>
                 <Link href="#contact" className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition duration-300">
                   Get in touch
                 </Link>

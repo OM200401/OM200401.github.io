@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import emailjs from 'emailjs-com'
 
 const ContactForm = () => {
   const [formState, setFormState] = useState({
@@ -15,6 +14,7 @@ const ContactForm = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({
@@ -26,9 +26,10 @@ const ContactForm = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
   
     try {
-      const response = await fetch('/api/send', {
+      const response = await fetch('https://formspree.io/f/xnjzeoad', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,11 +40,13 @@ const ContactForm = () => {
       if (response.ok) {
         setIsSubmitted(true);
         setFormState({ name: '', email: '', message: '' });
+        setTimeout(() => setIsSubmitted(false), 5000);
       } else {
-        console.error('Error sending email');
+        setError('Failed to send message. Please try again.');
       }
     } catch (error) {
       console.error('Error sending email', error);
+      setError('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -106,6 +109,16 @@ const ContactForm = () => {
           >
             <FontAwesomeIcon icon={faCheck as IconProp} className="mr-2" />
             Message sent successfully!
+          </motion.div>
+        )}
+        {error && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="text-red-600 dark:text-red-400 text-center"
+          >
+            {error}
           </motion.div>
         )}
       </AnimatePresence>

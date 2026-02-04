@@ -26,38 +26,37 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ title, company, date, r
 export default function Component() {
   const experiences = [
     {
-      title: "Data and Software Specialist Coop",
-      company: "Spartan Controls",
+      title: "Data and Software Specialist Intern",
+      company: "Spartan Controls Ltd",
       date: "May 2024 - August 2025",
       responsibilities: [
-        "Worked on an Internal tool for the team to extract data from an OPC source to an excel sheet to be imported into AVEVA PI systems",
-        "Supported several different projects that involved Migration and Installation of Data Visualization softwares",
-        "Helping clients with several problems as part of the Support team",
-        "Worked on Empower, Spartan's very own project that serves specific needs of different business groups and organizations"
+        "Developed a custom data management tool and automation solutions that reduced report generation time by 70% and manual data entry errors by 60%, saving clients an estimated $50,000 annually",
+        "Independently authored a technical proposal to secure and deliver a solo project while creating internal tools adopted company-wide, increasing sales team efficiency and engagement by 30%",
+        "Engineered interactive dashboards for multiple operational sites, resulting in a 30% reduction in on-site visits and saving approximately 100 hours per month on manual monitoring"
+      ]
+    },
+    {
+      title: "Software Developer Intern",
+      company: "University of British Columbia",
+      date: "May 2023 - January 2024",
+      responsibilities: [
+        "Led a team of 10+ software engineers to develop a course registration tool, resulting in a 20% increase in student enrollment and a 40% reduction in registration errors through optimized authentication",
+        "Implemented a responsive interface using TypeScript, Tailwind CSS, and the Remix framework, driving a 30% improvement in user satisfaction ratings"
       ]
     },
     {
       title: "Collegia Assistant",
       company: "University of British Columbia",
-      date: "Aug 2023 – April 2024",
+      date: "Aug 2023 - April 2024",
       responsibilities: [
         "Managed collegium space and organized monthly events for students.",
         "Organizing monthly events for students to participate in and meet other peers."
       ]
     },
     {
-      title: "Software Developer Intern",
-      company: "University of British Columbia",
-      date: "May 2023 – January 2024",
-      responsibilities: [
-        "Managed a Web-App Project under my Professor as the Team Leader to develop a tool for students to be able to register into courses including other features.",
-        "Developed the user interface using TypeScript, Tailwind CSS in the Remix framework and authentication using remix-auth package."
-      ]
-    },
-    {
       title: "Orientation Leader",
       company: "University of British Columbia",
-      date: "Aug 2023 – Sept 2023",
+      date: "Aug 2023 - Sept 2023",
       responsibilities: [
         "Led new students through a series of events and games to introduce them to their new campus and university.",
         "Gave a campus tour to all the students while introducing the different resources available to them on campus."
