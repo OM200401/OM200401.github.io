@@ -10,7 +10,7 @@ import { faJava, faPython, faJs, faHtml5, faCss3Alt, faNode, faReact, faGithubSq
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCode, faCog, faDatabase, faEnvelope, faFire, faLeaf, faMicrochip, faMoon, faServer, faWind } from '@fortawesome/free-solid-svg-icons';
 
-const ProjectCard = ({ title, date, description, githubLink }: { title: string, date: string, description: string, githubLink: string }) => (
+const ProjectCard = ({ title, date, description, githubLink, highlights }: { title: string, date: string, description?: string, githubLink: string, highlights?: string[] }) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
     transition={{ type: "spring", stiffness: 300 }}
@@ -19,7 +19,14 @@ const ProjectCard = ({ title, date, description, githubLink }: { title: string, 
       <div className="h-full w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
         <h3 className="text-gray-800 dark:text-white text-xl font-bold mb-2">{title}</h3>
         <p className="text-gray-600 dark:text-gray-300 mb-4">{date}</p>
-        <p className="text-gray-700 dark:text-gray-200">{description}</p>
+        {description && <p className="text-gray-700 dark:text-gray-200 mb-3">{description}</p>}
+        {highlights && (
+          <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1">
+            {highlights.map((item, index) => (
+              <li key={index} className="text-sm">{item}</li>
+            ))}
+          </ul>
+        )}
       </div>
     </Link>
   </motion.div>
@@ -192,9 +199,30 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-8 text-center">Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <ProjectCard
-                title="Gestura"
+                title="CodeAncestry 🏆"
+                date="January 2026"
+                description="Winner: Best Developer Tool (Warp) & Best Use of Snowflake API at nwPlus 2026!"
+                highlights={[
+                  "Engineered a RAG-based system using Vector Embeddings to process 100+ git commits",
+                  "Enabled semantic retrieval of codebase history with 90%+ relevance",
+                  "Improved response latency by 40% using Gemini Flash classifier"
+                ]}
+                githubLink="https://github.com/OM200401/nwHacks-2026"
+              />
+              <ProjectCard
+                title="Automated Apple Quality Analysis System"
+                date="September 2025 - April 2026"
+                description="Honors Thesis under Dr. Ramon Lawrence for Agriculture and Agri-Food Canada. Developed an automated image processing system using YOLOv11 (99% precision, 100% recall) and ResNet to analyze apple fruit quality traits. Built a robust data pipeline with PostgreSQL for scalable postharvest evaluation."
+                githubLink="https://github.com/OM200401"
+              />
+              <ProjectCard
+                title="Gestura 🥈"
                 date="January 2024"
-                description="This project was developed during BCHacks 2024 and won the second place at the hackathon. Developed a software to convert ASL to text and speech in 5 different languages using Python with OpenCV, Keras, and TensorFlow."
+                description="2nd Place Winner at BCHacks 2024!"
+                highlights={[
+                  "Developed software to convert ASL to text and speech in 5 different languages",
+                  "Built using Python with OpenCV, Keras, and TensorFlow for real-time gesture recognition"
+                ]}
                 githubLink="https://github.com/OM200401/Gestura"
               />
               <ProjectCard
