@@ -10,7 +10,7 @@ import { faJava, faPython, faJs, faHtml5, faCss3Alt, faNode, faReact, faGithubSq
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCode, faCog, faDatabase, faEnvelope, faFire, faLeaf, faMicrochip, faMoon, faServer, faWind } from '@fortawesome/free-solid-svg-icons';
 
-const ProjectCard = ({ title, date, description, githubLink, highlights }: { title: string, date: string, description?: string, githubLink: string, highlights?: string[] }) => (
+const ProjectCard = ({ title, date, description, githubLink, highlights, techStack }: { title: string, date: string, description?: string, githubLink: string, highlights?: string[], techStack?: string[] }) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
     transition={{ type: "spring", stiffness: 300 }}
@@ -21,11 +21,20 @@ const ProjectCard = ({ title, date, description, githubLink, highlights }: { tit
         <p className="text-gray-600 dark:text-gray-300 mb-4">{date}</p>
         {description && <p className="text-gray-700 dark:text-gray-200 mb-3">{description}</p>}
         {highlights && (
-          <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1">
+          <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1 mb-4">
             {highlights.map((item, index) => (
               <li key={index} className="text-sm">{item}</li>
             ))}
           </ul>
+        )}
+        {techStack && techStack.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-4">
+            {techStack.map((tech, index) => (
+              <span key={index} className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-semibold px-3 py-1 rounded-full">
+                {tech}
+              </span>
+            ))}
+          </div>
         )}
       </div>
     </Link>
@@ -207,12 +216,14 @@ export default function Home() {
                   "Enabled semantic retrieval of codebase history with 90%+ relevance",
                   "Improved response latency by 40% using Gemini Flash classifier"
                 ]}
+                techStack={["Python", "RAG", "Vector Embeddings", "Gemini API", "Snowflake"]}
                 githubLink="https://github.com/OM200401/nwHacks-2026"
               />
               <ProjectCard
                 title="Automated Apple Quality Analysis System"
                 date="September 2025 - April 2026"
                 description="Honors Thesis under Dr. Ramon Lawrence for Agriculture and Agri-Food Canada. Developed an automated image processing system using YOLOv11 (99% precision, 100% recall) and ResNet to analyze apple fruit quality traits. Built a robust data pipeline with PostgreSQL for scalable postharvest evaluation."
+                techStack={["Python", "YOLOv11", "ResNet", "PostgreSQL", "Computer Vision"]}
                 githubLink="https://github.com/OM200401"
               />
               <ProjectCard
@@ -223,36 +234,42 @@ export default function Home() {
                   "Developed software to convert ASL to text and speech in 5 different languages",
                   "Built using Python with OpenCV, Keras, and TensorFlow for real-time gesture recognition"
                 ]}
+                techStack={["Python", "OpenCV", "TensorFlow", "Keras", "ASL Recognition"]}
                 githubLink="https://github.com/OM200401/Gestura"
               />
               <ProjectCard
                 title='WCUCC 2025'
                 date='Present'
                 description='Part of the Website Development Team for the Western Canadian Undergraduate Chemistry Conference 2025 which is to be hosted at UBCO the upcoming summer'
+                techStack={["Next.js", "React", "TypeScript", "Tailwind CSS"]}
                 githubLink='https://wcucc.ca'
               />
               <ProjectCard 
                 title="Discourse E-Learning Platform"
                 date="April 2024"
                 description='The project was developed as part of the COSC 310 (Software Engineering Course) and it focuses on Agile Development principles and the Software Engineering Lifecycle. It was developed using NextJS and TailwindCSS for the frontend and Firebase for the Backend Development. We also used Github Actions and Vercel to develop pipelines and host our platform online.'
+                techStack={["Next.js", "React", "TypeScript", "TailwindCSS", "Firebase", "Vercel"]}
                 githubLink='https://github.com/OM200401/Discord-Mods'
               />
                 <ProjectCard
                 title="S-MART"
                 date="December 2023"
                 description='The project aims to develop a robust and user-friendly grocery shopping platform named "S-MART." This platform was built using Node.js, CSS, Docker and Express alongside SQL for the Backend Development.'
+                techStack={["Node.js", "Express", "SQL", "Docker", "CSS"]}
                 githubLink='https://github.com/OM200401/COSC304_project'
               />
               <ProjectCard
                 title="Grocery Shopping Website"
                 date="December 2023"
                 description="Developed a full-stack grocery website using Node.js, HTML/CSS, MySQL, implementing features like product addition, order tracking, and authentication."
+                techStack={["Node.js", "HTML", "CSS", "MySQL"]}
                 githubLink="https://github.com/OM200401/COSC304_Project"
               />
               <ProjectCard
                 title="Python Prediction Model"
                 date="January 2023 – April 2023"
                 description="Trained a Python model for data analysis on a Gun Violence Dataset using libraries like Pandas, Seaborn, and Matplotlib."
+                techStack={["Python", "Pandas", "Matplotlib", "Seaborn", "Data Analysis"]}
                 githubLink="https://github.com/ubco-W2022T2-data301/project-group09"
               />
             </div>
