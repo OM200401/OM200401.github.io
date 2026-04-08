@@ -2,26 +2,288 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==============================
+   NEXUS — Futuristic Portfolio
+   ============================== */
+
+/* --- Theme Variables --- */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --color-bg: #f8fafc;
+  --color-surface: #f1f5f9;
+  --color-card-bg: rgba(255, 255, 255, 0.75);
+  --color-card-border: rgba(148, 163, 184, 0.2);
+  --color-card-hover-border: rgba(6, 182, 212, 0.35);
+  --color-card-hover-shadow: rgba(6, 182, 212, 0.08);
+  --color-grid-line: rgba(6, 182, 212, 0.05);
+  --color-radial-glow: rgba(6, 182, 212, 0.04);
+  --color-scan-line: rgba(6, 182, 212, 0.04);
+  --color-social-border: rgba(100, 116, 139, 0.2);
+  --color-social-hover-shadow: rgba(6, 182, 212, 0.1);
+  --color-input-bg: #ffffff;
+  --color-input-border: #e2e8f0;
+  --color-tech-pill-bg: rgba(6, 182, 212, 0.08);
+  --color-tech-pill-border: rgba(6, 182, 212, 0.2);
+  --color-tech-pill-hover-bg: rgba(6, 182, 212, 0.15);
+  --color-tech-pill-hover-border: rgba(6, 182, 212, 0.4);
+  --color-profile-mask: #f8fafc;
+  --color-scrollbar-track: #f1f5f9;
+  --color-timeline-dot-bg: #f8fafc;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.dark {
+  --color-bg: #050508;
+  --color-surface: #0a0a12;
+  --color-card-bg: rgba(18, 18, 30, 0.6);
+  --color-card-border: rgba(139, 92, 246, 0.08);
+  --color-card-hover-border: rgba(6, 182, 212, 0.25);
+  --color-card-hover-shadow: rgba(6, 182, 212, 0.04);
+  --color-grid-line: rgba(6, 182, 212, 0.03);
+  --color-radial-glow: rgba(6, 182, 212, 0.08);
+  --color-scan-line: rgba(6, 182, 212, 0.03);
+  --color-social-border: rgba(100, 116, 139, 0.3);
+  --color-social-hover-shadow: rgba(6, 182, 212, 0.15);
+  --color-input-bg: #0a0a12;
+  --color-input-border: #1e1e30;
+  --color-tech-pill-bg: rgba(6, 182, 212, 0.06);
+  --color-tech-pill-border: rgba(6, 182, 212, 0.15);
+  --color-tech-pill-hover-bg: rgba(6, 182, 212, 0.12);
+  --color-tech-pill-hover-border: rgba(6, 182, 212, 0.35);
+  --color-profile-mask: #050508;
+  --color-scrollbar-track: #0a0a12;
+  --color-timeline-dot-bg: #050508;
 }
+
+/* --- Scrollbar --- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #06b6d4 var(--color-scrollbar-track);
+}
+*::-webkit-scrollbar { width: 6px; }
+*::-webkit-scrollbar-track { background: var(--color-scrollbar-track); }
+*::-webkit-scrollbar-thumb { background: #06b6d4; border-radius: 3px; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(--color-bg);
+  color: inherit;
+}
+
+/* ===== Background Effects ===== */
+
+.bg-grid {
+  background-image:
+    linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.bg-radial-glow {
+  background: radial-gradient(ellipse at 50% 0%, var(--color-radial-glow), transparent 70%);
+}
+
+/* ===== Glass Card ===== */
+
+.glass-card {
+  background: var(--color-card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-card-border);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--color-card-hover-border);
+  box-shadow: 0 0 30px var(--color-card-hover-shadow);
+}
+
+/* ===== Gradient Text ===== */
+
+.gradient-text {
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Navigation Link Underline ===== */
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ===== Profile Glow Ring ===== */
+
+@keyframes rotate-glow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.profile-glow {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-glow::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #06b6d4, #8b5cf6, #06b6d4);
+  animation: rotate-glow 4s linear infinite;
+}
+
+.profile-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--color-profile-mask);
+}
+
+/* ===== Buttons ===== */
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.btn-glow {
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6, #06b6d4);
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.3), 0 0 50px rgba(139, 92, 246, 0.15);
+}
+
+.btn-outline-glow {
+  border: 1px solid rgba(6, 182, 212, 0.5);
+  color: #06b6d4;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-glow:hover {
+  background: rgba(6, 182, 212, 0.08);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+  border-color: #06b6d4;
+}
+
+/* ===== Tech Stack Pills ===== */
+
+.tech-pill {
+  background: var(--color-tech-pill-bg);
+  border: 1px solid var(--color-tech-pill-border);
+  transition: all 0.3s ease;
+}
+
+.tech-pill:hover {
+  background: var(--color-tech-pill-hover-bg);
+  border-color: var(--color-tech-pill-hover-border);
+}
+
+/* ===== Form Input Glow ===== */
+
+.input-glow {
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
+  transition: all 0.3s ease;
+}
+
+.input-glow:focus {
+  border-color: #06b6d4;
+  box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.15), 0 0 15px rgba(6, 182, 212, 0.08);
+  outline: none;
+}
+
+/* ===== Section Divider ===== */
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #06b6d4, #8b5cf6, transparent);
+  opacity: 0.3;
+}
+
+/* ===== Timeline Pulse Dot ===== */
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 4px rgba(6, 182, 212, 0.4); }
+  50% { box-shadow: 0 0 8px rgba(6, 182, 212, 0.6), 0 0 16px rgba(6, 182, 212, 0.2); }
+}
+
+.pulse-dot {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+.timeline-dot-bg {
+  background: var(--color-timeline-dot-bg);
+}
+
+/* ===== Scan Line Hover Effect ===== */
+
+@keyframes scan {
+  from { top: -50%; }
+  to { top: 150%; }
+}
+
+.scan-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -50%;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(to bottom, transparent, var(--color-scan-line), transparent);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.scan-line:hover::after {
+  opacity: 1;
+  animation: scan 1.5s ease-in-out;
+}
+
+/* ===== Social Icon ===== */
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-social-border);
+  color: #94a3b8;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  border-color: #06b6d4;
+  color: #06b6d4;
+  box-shadow: 0 0 15px var(--color-social-hover-shadow);
+  transform: translateY(-2px);
 }

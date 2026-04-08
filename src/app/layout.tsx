@@ -1,24 +1,21 @@
-import Navbar from './components/Navbar'
 import './globals.css'
-import { Inter, Open_Sans, Roboto_Mono } from 'next/font/google'
+import { Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
-
-const openSans = Open_Sans({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-opensans'
+  variable: '--font-space-grotesk',
 })
 
-const robotoMono = Roboto_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-roboto-mono'
+  variable: '--font-jetbrains-mono',
 })
 
 export const metadata = {
-  title: 'Om Mistry',
-  description: 'Om Mistry\'s personal website',
+  title: 'Om Mistry | Software Developer',
+  description: 'Portfolio of Om Mistry — Software Developer, AI Enthusiast, and CS Student at UBC',
 }
 
 export default function RootLayout({
@@ -27,9 +24,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={'${openSans.variable} ${robotoMono.variable} font-sans'}>
-      <body className={inter.className}>
-        <Navbar />
+    <html lang="en" className={`dark ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+      <body className="font-sans antialiased">
         {children}
       </body>
     </html>

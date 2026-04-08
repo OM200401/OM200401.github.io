@@ -17,45 +17,45 @@ const ContactForm = () => {
   const [error, setError] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    })
+    setFormState({ ...formState, [e.target.name]: e.target.value })
   }
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setError('');
-  
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError('')
+
     try {
       const response = await fetch('https://formspree.io/f/xnjzeoad', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formState),
-      });
-  
+      })
+
       if (response.ok) {
-        setIsSubmitted(true);
-        setFormState({ name: '', email: '', message: '' });
-        setTimeout(() => setIsSubmitted(false), 5000);
+        setIsSubmitted(true)
+        setFormState({ name: '', email: '', message: '' })
+        setTimeout(() => setIsSubmitted(false), 5000)
       } else {
-        setError('Failed to send message. Please try again.');
+        setError('Failed to send message. Please try again.')
       }
-    } catch (error) {
-      console.error('Error sending email', error);
-      setError('Failed to send message. Please try again.');
+    } catch (err) {
+      console.error('Error sending email', err)
+      setError('Failed to send message. Please try again.')
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false)
     }
-  };
+  }
+
+  const inputClasses =
+    'w-full px-4 py-3 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 text-sm input-glow transition-all duration-300'
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+        <label htmlFor="name" className="block text-xs font-mono text-slate-500 mb-2 tracking-wider uppercase">
+          Name
+        </label>
         <input
           type="text"
           id="name"
@@ -63,11 +63,14 @@ const ContactForm = () => {
           value={formState.name}
           onChange={handleChange}
           required
-          className="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Your name"
+          className={inputClasses}
         />
       </div>
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+        <label htmlFor="email" className="block text-xs font-mono text-slate-500 mb-2 tracking-wider uppercase">
+          Email
+        </label>
         <input
           type="email"
           id="email"
@@ -75,11 +78,14 @@ const ContactForm = () => {
           value={formState.email}
           onChange={handleChange}
           required
-          className="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          placeholder="you@example.com"
+          className={inputClasses}
         />
       </div>
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+        <label htmlFor="message" className="block text-xs font-mono text-slate-500 mb-2 tracking-wider uppercase">
+          Message
+        </label>
         <textarea
           id="message"
           name="message"
@@ -87,27 +93,26 @@ const ContactForm = () => {
           value={formState.message}
           onChange={handleChange}
           required
-          className="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        ></textarea>
+          placeholder="Your message..."
+          className={`${inputClasses} resize-none`}
+        />
       </div>
-      <div>
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
-        >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
-        </button>
-      </div>
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full btn-glow py-3 rounded-lg text-white font-medium text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {isSubmitting ? 'Sending...' : 'Send Message'}
+      </button>
       <AnimatePresence>
         {isSubmitted && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="text-green-600 dark:text-green-400 text-center"
+            className="text-cyan-600 dark:text-cyan-400 text-center text-sm flex items-center justify-center gap-2"
           >
-            <FontAwesomeIcon icon={faCheck as IconProp} className="mr-2" />
+            <FontAwesomeIcon icon={faCheck as IconProp} />
             Message sent successfully!
           </motion.div>
         )}
@@ -116,7 +121,7 @@ const ContactForm = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="text-red-600 dark:text-red-400 text-center"
+            className="text-red-600 dark:text-red-400 text-center text-sm"
           >
             {error}
           </motion.div>
@@ -126,4 +131,4 @@ const ContactForm = () => {
   )
 }
 
-export default ContactForm;
+export default ContactForm
