@@ -480,9 +480,8 @@ export default function Home() {
               <StatCard icon={faBrain as IconProp} value="AI / ML" label="Primary Focus" accentIndex={1} />
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-5 mt-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 sm:max-w-sm">
             <StatCard icon={faLocationDot as IconProp} value="Calgary, AB" label="Based In" accentIndex={2} />
-            <StatCard icon={faStar as IconProp} value="4.00 GPA" label="Dean's List" accentIndex={3} />
           </div>
         </div>
       </section>

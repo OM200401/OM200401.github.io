@@ -44,9 +44,9 @@ export default function ExperienceSection() {
     {
       title: 'Data and Software Specialist',
       company: 'Spartan Controls Ltd',
-      date: 'Aug 2025 — Present',
+      date: 'June 2026 — Present',
       responsibilities: [
-        'Build custom data automations for multiple clients using industrial data management platforms including AVEVA PI, AspenTech, and Mason DataPark',
+        'Build custom data automations for multiple clients using industrial data management platforms including AVEVA PI, AspenTech, and Capstone dataPARC',
         'Support clients on existing data solutions deployed at their sites, troubleshooting and maintaining systems to ensure reliable operation',
         'Identify optimization opportunities and propose improvements that help clients increase revenue and streamline business operations',
         'Design and build interactive dashboards that give clients visibility into their data and business performance',
