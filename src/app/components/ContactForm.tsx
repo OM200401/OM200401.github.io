@@ -48,7 +48,7 @@ const ContactForm = () => {
   }
 
   const inputClasses =
-    'w-full px-4 py-3 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 text-sm input-glow transition-all duration-300'
+    'w-full px-4 py-3 rounded-2xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 text-sm input-glow transition-all duration-300'
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -100,7 +100,7 @@ const ContactForm = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full btn-glow py-3 rounded-lg text-white font-medium text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full btn-glow py-3 rounded-full text-white font-medium text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? 'Sending...' : 'Send Message'}
       </button>

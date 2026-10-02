@@ -16,6 +16,9 @@ module.exports = {
           border: '#1e1e30',
           cyan: '#06b6d4',
           violet: '#8b5cf6',
+          coral: '#fb7185',
+          amber: '#f59e0b',
+          lime: '#a3e635',
           text: '#e2e8f0',
           muted: '#64748b',
         },
@@ -27,6 +30,12 @@ module.exports = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      borderRadius: {
+        blob: '42% 58% 65% 35% / 45% 40% 60% 55%',
+      },
+      transitionTimingFunction: {
+        bounce: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
       },
     },
   },
